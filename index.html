@@ -3,74 +3,94 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>fluid typography</title>
+        <title>Fluid Type</title>
         <style>
 
             * {
+                margin: 0;
                 box-sizing: border-box;
             }
 
-            :root {
+            html {
+                /* Set to 100%, this way rem media queries are predictable */
                 font-size: 100%;
             }
 
             body {
-                margin: 0;
-                font-family: sans-serif;
-                font-size: 1em;
-                line-height: 1.5em;
+                font-family: serif;
+                font-size: 1rem;
+                line-height: 1.5;
+                text-rendering: auto;
                 -webkit-text-size-adjust: 100%;
                 -ms-text-size-adjust: 100%;
                 text-size-adjust: 100%;
             }
 
-            /**
-             * Fluid typography between a min & max font-size and molten leading
-             * calc(minSize + (maxSize - minSize) * ((100vw - minPort) / (maxPort - minPort)));
-             */
-            @media screen and (min-width: 20em) {
+            p {
+                margin: 1rem 0;
+            }
 
-                body {
-                    font-size: calc(1em + (1.1875 - 1) * ((100vw - 20em) / (80 - 20)));
-                    line-height: calc(1.5em + (1.8 - 1.5) * ((100vw - 20em) / (80 - 20)));
+            .Article {
+                font-size: 1rem;
+                line-height: 1.5;
+                padding: 1rem;
+            }
+
+            .Article-title {
+                font-size: 1.5rem;
+                line-height: 1.125;
+                margin-bottom: 1rem;
+            }
+
+            @media screen and (min-width: 20rem) {
+
+                .Article-body {
+                    font-size: calc(1rem + (1.5 - 1) * ((100vw - 20rem) / (80 - 20)));
+                    /* Force Safari repaint: */
+                    line-height: calc(1.5rem + (2.25 - 1.5) * ((100vw - 20rem) / (80 - 20)));
+                }
+
+                .Article-title {
+                    font-size: calc(1.5rem + (2.5 - 1.5) * ((100vw - 20rem) / (80 - 20)));
+                    /* Force Safari repaint: */
+                    line-height: calc(1.6875rem + (2.8125 - 1.6875) * ((100vw - 20rem) / (80 - 20)));
                 }
 
             }
 
-            @media screen and (min-width: 80em) {
+            @media (min-width: 80rem) {
 
-                body {
-                    font-size: 1.1875em;
-                    line-height: 1.8em;
+                .Article-body {
+                    font-size: 1.5rem;
+                    line-height: 1.5;
+                    outline: 1px dotted pink;
+                }
+
+                .Article-title {
+                    font-size: 2.5rem;
+                    line-height: 1.125;
                 }
 
             }
 
-            h2 {
-                margin: 0;
-                line-height: 1.25em;
+            :first-child {
+                margin-top: 0 !important;
             }
 
-            article {
-                padding: 1em;
-                max-width: 48em;
-            }
-
-            article > :first-child {
-                margin-top: 0;
-            }
-
-            article > :last-child {
-                margin-bottom: 0;
+            :last-child {
+                margin-bottom: 0 !important;
             }
 
         </style>
     </head>
     <body>
-        <article>
-            <h2>Léa Padovani &amp;<br>Sébastien Kieffer</h2>
-            <p>You might haven’t heard their names, but Pool has been buzzing hard lately on every design fair and in the blogosphere. Their poppy and colorful pieces are highly desirable and spot on. And unsurprisingly, they fit accordingly their own urban lifestyle. With a background in interior architecture and product design, Léa and Sébastien have proved remarkably versatile, completing scenography projects for Cassina, Lille Design, the interior of Craft café and pieces for Petite Friture, la Chance, La Redoute and Habitat.</p>
-            <p>The duo met while working for Noé Duchaufour-Lawrance’s agency. For nearly five years, they honed their skills together while forging a lasting friendship. Both wanted to be independent and rejoiced at designing objects for themselves. They founded Pool, did a couple of exhibitions and after that, they couldn’t stop their creative flow and they went on from creating a chair, to graphic design. We meet for coffee in Léa’s cosy apartment in Paris.</p>
+        <article class="Article">
+            <h2 class="Article-title">Léa Padovani &amp;<br>Sébastien Kieffer</h2>
+            <div class="Article-body">
+                <p>My work is about a dialogue with content. Like most graphic design it is inherently time and context specific, and therefore difficult to translate to the web without formalising it. Also, working in a field which is a lot about amplification, promotion, publishing, distribution and exposure I quite enjoy keeping my own profile low-key. Admittedly, I just made my first business card in years, simply because we discovered that there was some space left on the printing sheet of a larger corporate identity job. As I only had two minutes to do it, it didn't turn out great, so I doubt I'll ever use it.</p>
+                <p>You might haven’t heard their names, but Pool has been buzzing hard lately on every design fair and in the blogosphere. Their poppy and colorful pieces are highly desirable and spot on. And unsurprisingly, they fit accordingly their own urban lifestyle. With a background in interior architecture and product design, Léa and Sébastien have proved remarkably versatile, completing scenography projects for Cassina, Lille Design, the interior of Craft café and pieces for Petite Friture, la Chance, La Redoute and Habitat.</p>
+                <p>The duo met while working for Noé Duchaufour-Lawrance’s agency. For nearly five years, they honed their skills together while forging a lasting friendship. Both wanted to be independent and rejoiced at designing objects for themselves. They founded Pool, did a couple of exhibitions and after that, they couldn’t stop their creative flow and they went on from creating a chair, to graphic design. We meet for coffee in Léa’s cosy apartment in Paris.</p>
+            </div>
         </article>
     </body>
 </html>
